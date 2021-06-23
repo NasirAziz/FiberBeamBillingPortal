@@ -3,7 +3,6 @@ package com.example.fiberbeamportal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.fiberbeamportal.databinding.ActivityAdminBinding
 import com.example.fiberbeamportal.databinding.ActivityAdminDashboardBinding
 
 class AdminDashboard : AppCompatActivity() {
