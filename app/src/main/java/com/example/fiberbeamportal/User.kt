@@ -3,10 +3,7 @@ package com.example.fiberbeamportal
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.Toast
-import com.example.fiberbeamportal.databinding.ActivityAddCustomerBinding
-import com.example.fiberbeamportal.databinding.ActivityAddNewUserBinding
 import com.example.fiberbeamportal.databinding.ActivityUserBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 
@@ -19,21 +16,24 @@ class User : AppCompatActivity() {
         binding = ActivityUserBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.btnuserLogin.setOnClickListener {
 
-           for (user in MyFirebaseFirestore.users)
-           {
+        binding.btnuserLogin.setOnClickListener {
+           var isUserFound = false
+           for (user in MyFirebaseFirestore.users) {
                val email = user?.email
                val password = user?.password
-               if (binding.editTextTextPersonName3.text.toString() == email && binding.editTextTextPassword.text.toString() == password) {
+
+               if (binding.editTextTextPersonName3.text.toString() == email
+                   && binding.editTextTextPassword.text.toString() == password) {
+                   isUserFound = true
                    val intent = Intent(this, Userdashboard::class.java)
                    startActivity(intent)
                    finish()
-
                }
-               // TODO
+           }
+            if(!isUserFound){
+                Toast.makeText(this,"User not found!",Toast.LENGTH_SHORT).show()
             }
-
         }
 
     }
