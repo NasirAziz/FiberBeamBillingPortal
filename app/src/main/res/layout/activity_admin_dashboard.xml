@@ -8,30 +8,25 @@
     tools:context=".AdminDashboard"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         app:cardCornerRadius="5dp"
         android:padding="5dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.166">
+        app:cardElevation="5dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="TotalCustomers"
+            android:text="Total Customers"
             android:textColor="#2962FF"
-            android:textSize="25dp" />
+            android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tvTotalCustomers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
@@ -44,12 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:text="TotalPaidBill"
+            android:text="Total Paid Bill"
             android:textColor="#2962FF"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tvTotalPaid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
@@ -59,15 +54,16 @@
             android:textSize="25sp" />
 
         <TextView
+
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
-            android:text="TotalUnpaidBill"
+            android:text="Total Unpaid Bill"
             android:textColor="#2962FF"
             android:textSize="25sp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvTotalUnpaid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
@@ -76,7 +72,7 @@
             android:textAlignment="textEnd"
             android:textColor="#DD2C00"
             android:textSize="25sp" />
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
     <ImageView
         android:id="@+id/imageView4"
@@ -90,7 +86,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_gravity="end">
+        android:layout_gravity="center_vertical">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnAddNewUser"

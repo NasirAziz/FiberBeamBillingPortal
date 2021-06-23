@@ -24,8 +24,10 @@
             android:layout_marginTop="20dp"
             android:ems="10"
             android:hint="Username"
+            android:padding="8dp"
+            android:background="@drawable/shape"
             android:inputType="textPersonName"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
@@ -33,9 +35,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:ems="10"
+            android:padding="8dp"
+            android:background="@drawable/shape"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <Button
             android:id="@+id/btnAdminLogin"
