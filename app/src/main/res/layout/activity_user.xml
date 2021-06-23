@@ -13,39 +13,42 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:background="@drawable/shape"
-            android:inputType="textPersonName"
+            android:ems="10"
             android:hint="Username"
-            android:textSize="30sp"
-            android:layout_margin="5dp"
-            />
+            android:inputType="textPersonName"
+            android:textSize="30dp" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:background="@drawable/shape"
             android:ems="10"
-            android:inputType="textPassword"
             android:hint="Password"
-            android:textSize="30sp"
-            android:padding="5dp"
-            android:layout_margin="5dp"/>
+            android:inputType="textPassword"
+            android:padding="8dp"
+            android:textSize="30dp"
+            android:layout_marginTop="20dp"
+            />
 
         <Button
-            android:id="@+id/btnAdminLogin"
+            android:id="@+id/btnuserLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
+            android:layout_margin="5dp"
             android:text="Login"
-            android:textSize="20sp"
-            android:layout_margin="5dp"/>
+            android:textSize="20sp" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
