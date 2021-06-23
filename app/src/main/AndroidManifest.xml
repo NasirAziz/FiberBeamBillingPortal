@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FiberBeamPortal">
-        <activity android:name=".AdminDashboard"></activity>
+        <activity android:name=".ViewBillsActivity"></activity>
+        <activity android:name=".AdminDashboard" />
         <activity android:name=".AddNewUser" />
         <activity android:name=".PayBill" />
         <activity android:name=".AddCustomer" />
