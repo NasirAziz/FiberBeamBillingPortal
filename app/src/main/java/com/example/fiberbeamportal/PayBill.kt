@@ -3,12 +3,20 @@ package com.example.fiberbeamportal
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.DatePicker
+import android.widget.Toast
 import com.example.fiberbeamportal.adapter.PayBillAdapter
 import com.example.fiberbeamportal.databinding.ActivityPayBillBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
+import com.example.fiberbeamportal.model.Customer
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PayBill : AppCompatActivity() {
     private lateinit var binding: ActivityPayBillBinding
+    var position1 =-1
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -25,9 +33,9 @@ class PayBill : AppCompatActivity() {
                 binding.rvPayBills.visibility = View.GONE
                 val layout = findViewById<View>(R.id.include)
                 layout.visibility = View.VISIBLE
+                position1 = position
                 binding.include.dtCustomerNameUD.setText(customer[position].name)
-                binding.include.dtCustomerDateOfPaymentUD.setText(customer[position].dateofconnection)
-                binding.include.dtCustomerBillUD.setText(customer[position].bill)
+
 
             }
 
@@ -42,9 +50,23 @@ class PayBill : AppCompatActivity() {
 
         binding.include.btnPaynConfirm.setOnClickListener {
             //TODO
+
             binding.rvPayBills.visibility = View.VISIBLE
             val layout = findViewById<View>(R.id.include)
             layout.visibility = View.GONE
+            if (binding.include.dtCustomerBillUD.text.toString() == customer[position1].bill.toString()){
+                Toast.makeText(this,"Bill Paid",Toast.LENGTH_SHORT).show()
+                binding.rvPayBills.visibility = View.VISIBLE
+                val layout = findViewById<View>(R.id.include)
+                layout.visibility = View.GONE
+                var customer = customer[position1]
+                val sdf = SimpleDateFormat("dd/MM/yyyy")
+                val currentDate = sdf.format(Date())
+                customer.dateofconnection =  currentDate.toString()
+                FirebaseFirestore.getInstance().collection("Customers").document(customer.phone).set(
+                        customer
+                )
+            }
 
         }
     }
