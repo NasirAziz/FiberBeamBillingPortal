@@ -12,101 +12,104 @@
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Customer"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            android:textColor="#6200EA"
-            android:layout_marginTop="40dp"
-            />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <EditText
             android:id="@+id/edtname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/shape"
-            />
+            android:hint="Full Name"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/edtdesignation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Designation"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/shape"
-            />
+            android:ems="10"
+            android:hint="Designation"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/edtbill"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Bill"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/shape"
-            />
-        <EditText
-            android:id="@+id/edtphone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="Bill"
             android:inputType="textPersonName"
-            android:text="PhoneNo"
-            android:layout_marginTop="40dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/shape"
-            />
+            android:padding="5dp"
+            android:textSize="18sp" />
 
         <EditText
-            android:id="@+id/edtdate"
+            android:id="@+id/edtdateofconnection"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="date"
-            android:text="DateOfConnection"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
             android:background="@drawable/shape"
-            />
+            android:ems="10"
+            android:hint="Date Of Connection"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="18sp" />
+
         <EditText
             android:id="@+id/edtadress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Adress"
-            android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
             android:background="@drawable/shape"
-            />
+            android:ems="10"
+            android:hint="Address"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="18sp" />
+        <EditText
+            android:id="@+id/edtphno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/shape"
+            android:ems="10"
+            android:hint="Phoneno"
+            android:inputType="textPersonName"
+            android:padding="5dp"
+            android:textSize="18sp" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btncreateuser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginTop="30dp"
-            android:text="Create Customer"
-
-            />
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:text="Create User" />
 
     </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
