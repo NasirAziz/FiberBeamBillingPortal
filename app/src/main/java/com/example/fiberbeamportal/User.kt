@@ -18,7 +18,7 @@ class User : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        binding.btnuserLogin.setOnClickListener {
+        binding.btnUserLogin.setOnClickListener {
            var isUserFound = false
 
            for (user in MyFirebaseFirestore.users) {

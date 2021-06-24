@@ -21,7 +21,6 @@ class AddNewUser : AppCompatActivity() {
         binding.btncreateuser.setOnClickListener {
             if (!validateFields()){
 
-                Toast.makeText(this,"ran",Toast.LENGTH_SHORT).show()
                 val name =  binding.edtname.text.toString()
                 val email =  binding.edtusername.text.toString()
                 val phone =  binding.edtphone.text.toString()
@@ -46,6 +45,11 @@ class AddNewUser : AppCompatActivity() {
                         "Failed please check your internet connection.",
                         Toast.LENGTH_SHORT).show()
                 }
+            }else{
+                Toast.makeText(this,
+                    "Please Fill all fields",
+                    Toast.LENGTH_SHORT).show()
+
             }
 
         }
@@ -53,10 +57,10 @@ class AddNewUser : AppCompatActivity() {
     }
 
     private fun validateFields():Boolean {
-        return binding.edtname.text.isNullOrEmpty() &&
-                binding.edtadress.text.isNullOrEmpty() &&
-                binding.edtpassword.text.isNullOrEmpty() &&
-                binding.edtphone.text.isNullOrEmpty() &&
+        return binding.edtname.text.isNullOrEmpty() ||
+                binding.edtadress.text.isNullOrEmpty() ||
+                binding.edtpassword.text.isNullOrEmpty() ||
+                binding.edtphone.text.isNullOrEmpty() ||
                 binding.edtusername.text.isNullOrEmpty()
     }
 }

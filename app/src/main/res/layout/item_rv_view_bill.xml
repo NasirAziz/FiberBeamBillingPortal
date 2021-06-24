@@ -43,7 +43,7 @@
                 android:id="@+id/appCompatTextView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ref No: "
+                android:text="Phone No: "
                 android:textStyle="bold"
                 android:layout_margin="5dp"
                 android:textSize="18sp"

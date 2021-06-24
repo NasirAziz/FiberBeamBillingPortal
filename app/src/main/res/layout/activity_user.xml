@@ -19,29 +19,28 @@
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_margin="5dp"
             android:background="@drawable/shape"
             android:ems="10"
+            android:padding="8dp"
             android:hint="Username"
             android:inputType="textPersonName"
-            android:textSize="30dp" />
+            android:textSize="30sp" />
 
         <EditText
             android:id="@+id/editTextTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:background="@drawable/shape"
             android:ems="10"
             android:hint="Password"
             android:inputType="textPassword"
             android:padding="8dp"
-            android:textSize="30dp"
-            android:layout_marginTop="20dp"
-            />
+            android:textSize="30sp"
+            android:layout_margin="5dp" />
 
         <Button
-            android:id="@+id/btnuserLogin"
+            android:id="@+id/btnUserLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

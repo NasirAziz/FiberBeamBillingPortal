@@ -20,6 +20,11 @@ class Userdashboard : AppCompatActivity() {
             startActivity(intent)
 
         }
+        binding.btnPaybill.setOnClickListener {
+            val intent = Intent (this,PayBill::class.java )
+            startActivity(intent)
+
+        }
 
     }
 }

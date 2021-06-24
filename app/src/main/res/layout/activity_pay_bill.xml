@@ -7,11 +7,22 @@
     android:layout_height="match_parent"
     tools:context=".PayBill">
 
+    <include
+        android:id="@+id/include"
+        layout="@layout/bill_payment_layout"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="gone"/>
+
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvViewBills"
+        android:id="@+id/rvPayBills"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_rv_bill"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/item_rv_view_bill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

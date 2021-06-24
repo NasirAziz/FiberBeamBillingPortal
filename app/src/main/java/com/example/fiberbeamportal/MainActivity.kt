@@ -12,16 +12,17 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val admin: Button = findViewById(R.id.btn_admin)
 
-        MyFirebaseFirestore.getUserCredentials(this)
+        MyFirebaseFirestore.getUsers(this)
+        MyFirebaseFirestore.getCustomers(this)
 
         admin.setOnClickListener {
-            val intent = Intent(this,AdminDashboard::class.java)
+            val intent = Intent(this, AdminDashboard::class.java)
             startActivity(intent)
         }
 
         val user:Button = findViewById(R.id.btn_user)
         user.setOnClickListener {
-            val intent = Intent(this,User::class.java)
+            val intent = Intent(this, Userdashboard::class.java)
             startActivity(intent)
         }
     }
