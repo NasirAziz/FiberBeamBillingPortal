@@ -36,7 +36,6 @@ class PayBill : AppCompatActivity() {
                 position1 = position
                 binding.include.dtCustomerNameUD.setText(customer[position].name)
 
-
             }
 
         })
@@ -49,23 +48,22 @@ class PayBill : AppCompatActivity() {
         }
 
         binding.include.btnPaynConfirm.setOnClickListener {
-            //TODO
-
-            binding.rvPayBills.visibility = View.VISIBLE
-            val layout = findViewById<View>(R.id.include)
-            layout.visibility = View.GONE
-            if (binding.include.dtCustomerBillUD.text.toString() == customer[position1].bill.toString()){
+            if (binding.include.dtCustomerBillUD.text.toString() == customer[position1].bill){
                 Toast.makeText(this,"Bill Paid",Toast.LENGTH_SHORT).show()
-                binding.rvPayBills.visibility = View.VISIBLE
-                val layout = findViewById<View>(R.id.include)
-                layout.visibility = View.GONE
-                var customer = customer[position1]
+
+                val customer = customer[position1]
                 val sdf = SimpleDateFormat("dd/MM/yyyy")
                 val currentDate = sdf.format(Date())
                 customer.dateofconnection =  currentDate.toString()
-                FirebaseFirestore.getInstance().collection("Customers").document(customer.phone).set(
-                        customer
-                )
+                customer.status = "Paid"
+                FirebaseFirestore.getInstance()
+                    .collection("Customers")
+                    .document(customer.phone)
+                    .set(customer)
+
+                binding.rvPayBills.visibility = View.VISIBLE
+                val layout = findViewById<View>(R.id.include)
+                layout.visibility = View.GONE
             }
 
         }

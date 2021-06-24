@@ -23,12 +23,12 @@ class AddCustomer : AppCompatActivity() {
                 Toast.makeText(this, "Please Fill All The Fields", Toast.LENGTH_SHORT).show()
             } else {
                 val name = binding.edtname.text.toString()
-                val adress = binding.edtname.text.toString()
+                val adress = binding.edtadress.text.toString()
                 val designation = binding.edtdesignation.text.toString()
                 val bill = binding.edtbill.text.toString()
                 val phno = binding.edtphno.text.toString()
                 val dateofconnection = binding.edtdateofconnection.text.toString()
-                val customer = NewCustomer(name, adress, designation, bill, phno, dateofconnection)
+                val customer = NewCustomer(name,designation,bill,dateofconnection,adress,phno,"Unpaid")
                 try {
                     FirebaseFirestore.getInstance().collection("Customers").document(phno)
                             .set(customer).addOnSuccessListener {

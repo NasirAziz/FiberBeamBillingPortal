@@ -39,6 +39,7 @@ class PayBillAdapter(val context: Context, private val customers: MutableList<Ne
         val phoneNo:TextView = view.findViewById(R.id.tvPhoneNo)
         val status:TextView = view.findViewById(R.id.tvStatus)
         val date:TextView = view.findViewById(R.id.tvDateOfBill)
+        val bill:TextView = view.findViewById(R.id.tvPaymentBill)
 
     }
 
@@ -55,8 +56,9 @@ class PayBillAdapter(val context: Context, private val customers: MutableList<Ne
             val data = customers[position]
             holder.name.text = data.name
             holder.phoneNo.text = data.phone
-           // holder.status.text = data.status
+            holder.status.text = data.status
             holder.date.text = data.dateofconnection
+            holder.bill.text = data.bill
         }
     }
 
