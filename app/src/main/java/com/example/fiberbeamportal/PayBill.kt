@@ -37,25 +37,32 @@ class PayBill : AppCompatActivity() {
 
         binding.include.btnPaynConfirm.setOnClickListener {
             if (binding.include.dtCustomerBillUD.text.toString() == customer[position1].bill){
-                Toast.makeText(this,"Bill Paid",Toast.LENGTH_SHORT).show()
 
-                val customer = customer[position1]
+                val currentCustomer = customer[position1]
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val currentDate = sdf.format(Date())
-                customer.dateofconnection =  currentDate.toString()
-                customer.status = "Paid"
+                currentCustomer.dateofconnection =  currentDate.toString()
+                currentCustomer.status = "Paid"
 
                 FirebaseFirestore.getInstance()
                     .collection("Customers")
-                    .document(customer.phone)
-                    .set(customer)
+                    .document(currentCustomer.phone)
+                    .set(currentCustomer)
+                    .addOnSuccessListener {
+                        Toast.makeText(this,"Bill Paid",Toast.LENGTH_SHORT).show()
 
-                //updateUI when bill is paid
-                getCustomers(this)
+                    }.addOnCompleteListener {
+                        //updateUI when bill is paid
+                        getCustomers(this)
 
-                binding.rvPayBills.visibility = View.VISIBLE
-                val layout = findViewById<View>(R.id.include)
-                layout.visibility = View.GONE
+                        binding.rvPayBills.visibility = View.VISIBLE
+                        val layout = findViewById<View>(R.id.include)
+                        layout.visibility = View.GONE
+                    }
+                //TODO review and test above listeners
+            }else{
+                Toast.makeText(this,"Please enter valid bill amount.",Toast.LENGTH_SHORT).show()
+
             }
 
         }
