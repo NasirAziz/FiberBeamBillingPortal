@@ -108,7 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_margin="8dp"
-            android:text="Create User" />
+            android:text="Create" />
 
     </LinearLayout>
 

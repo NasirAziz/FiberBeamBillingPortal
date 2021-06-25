@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAdminDashboardBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
@@ -14,8 +15,12 @@ class AdminDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminDashboardBinding
 
     private fun getCustomers(context: Context) {
+        Log.i("AdminDashboard","getCustomer called")
         var customer: NewCustomer?
-        FirebaseFirestore.getInstance().collection("Customers")
+
+       // Log.i("AdminDashboard","$paid")
+        if(MyFirebaseFirestore.customers.isEmpty()) {
+            FirebaseFirestore.getInstance().collection("Customers")
                 .get()
                 .addOnSuccessListener {
 
@@ -23,28 +28,37 @@ class AdminDashboard : AppCompatActivity() {
                         customer = document.toObject<NewCustomer>(NewCustomer::class.java)
                         MyFirebaseFirestore.customers.add(customer!!)
                     }
-                    
-                    var paid:Int = 0
-                    var unpaid:Int=0
-                    val totalcustomer = MyFirebaseFirestore.customers.size.toString()
-                    for(customer in MyFirebaseFirestore.customers){
-                        if (customer.status == "Paid"){
-                            paid++
-                        }
-                        else{
-                            unpaid++
-                        }
-                        binding.tvTotalCustomers.text= totalcustomer
-                        binding.tvTotalPaid.text = paid.toString()
-                        binding.tvTotalUnpaid.text = unpaid.toString()
 
-                    }
+                    updateUI()
+
                 }.addOnFailureListener {
-                    Toast.makeText(context,
-                            "Database connection failure please check your internet connection",
-                            Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        context,
+                        "Database connection failure please check your internet connection",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
+        }else{
+            updateUI()
+        }
     }
+
+    private fun updateUI() {
+        var paid:Int = 0
+        var unpaid:Int = 0
+
+        val totalcustomer = MyFirebaseFirestore.customers.size.toString()
+        for (customer in MyFirebaseFirestore.customers) {
+            if (customer.status == "Paid")
+                paid++
+            else
+                unpaid++
+        }
+        binding.tvTotalCustomers.text = totalcustomer
+        binding.tvTotalPaid.text = paid.toString()
+        binding.tvTotalUnpaid.text = unpaid.toString()
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
@@ -52,6 +66,7 @@ class AdminDashboard : AppCompatActivity() {
         setContentView(view)
 
         getCustomers(this)
+
         binding.btnAddNewUser.setOnClickListener {
             val intent = Intent(this, AddNewUser::class.java)
             startActivity(intent)
@@ -73,5 +88,10 @@ class AdminDashboard : AppCompatActivity() {
             intent.putExtra("key","view")
             startActivity(intent)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUI()
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAddCustomerBinding
+import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewCustomer
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception
@@ -47,6 +48,7 @@ class AddCustomer : AppCompatActivity() {
                             .set(customer).addOnSuccessListener {
                                 Toast.makeText(this, "Customer is created", Toast.LENGTH_SHORT).show()
                                 finish()
+                            MyFirebaseFirestore().updateCustomers(this)
                             }.addOnFailureListener {
                                 Toast.makeText(this, "Network Or Other issue", Toast.LENGTH_SHORT).show()
                             }

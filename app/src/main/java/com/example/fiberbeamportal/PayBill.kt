@@ -3,6 +3,7 @@ package com.example.fiberbeamportal
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.example.fiberbeamportal.adapter.PayBillAdapter
@@ -26,8 +27,19 @@ class PayBill : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        getCustomers(this)
+        if(MyFirebaseFirestore.customers.isEmpty()) {
+            getCustomers(this)
+            Log.i("PayBillActivity","MyFirebaseFirestore.customers.isEmpty")
 
+        }
+        else{
+            Log.i("PayBillActivity","MyFirebaseFirestore.customers.isNotEmpty")
+            customer.removeAll{ true }
+
+            customer.addAll(MyFirebaseFirestore.customers)
+            adapter = PayBillAdapter(this,customer)
+            updateUI(adapter)
+        }
         binding.include.btnCancel.setOnClickListener {
             binding.rvPayBills.visibility = View.VISIBLE
             val layout = findViewById<View>(R.id.include)
@@ -96,11 +108,14 @@ class PayBill : AppCompatActivity() {
         FirebaseFirestore.getInstance().collection("Customers")
             .get()
             .addOnSuccessListener {
+                this.customer.removeAll{ true }
                 for( document in it) {
                     customer = document.toObject<NewCustomer>(NewCustomer::class.java)
                     MyFirebaseFirestore.customers.add(customer!!)
                     this.customer.add(customer!!)
                 }
+                Log.i("PayBillActivity","after bill paid customers ${this.customer.size}")
+
             }.addOnFailureListener {
                 Toast.makeText(context,
                     "Database connection failure please check your internet connection",

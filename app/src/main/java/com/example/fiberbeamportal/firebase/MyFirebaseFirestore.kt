@@ -1,7 +1,9 @@
 package com.example.fiberbeamportal.firebase
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
+import com.example.fiberbeamportal.adapter.PayBillAdapter
 import com.example.fiberbeamportal.model.NewCustomer
 import com.example.fiberbeamportal.model.NewUser
 import com.example.fiberbeamportal.model.freecustomer
@@ -35,5 +37,22 @@ class MyFirebaseFirestore {
 
     }
 
+    fun updateCustomers(context: Context){
+        var customer: NewCustomer?
+        database.collection("Customers")
+            .get()
+            .addOnSuccessListener {
+                customers.removeAll{ true }
+                for( document in it) {
+                    customer = document.toObject<NewCustomer>(NewCustomer::class.java)
+                    customers.add(customer!!)
+                }
+                Log.i("UpdateCustomer","after bill paid customers ${customers.size}")
 
+            }.addOnFailureListener {
+                Toast.makeText(context,
+                    "Database connection failure please check your internet connection",
+                    Toast.LENGTH_SHORT).show()
+            }
+    }
 }
