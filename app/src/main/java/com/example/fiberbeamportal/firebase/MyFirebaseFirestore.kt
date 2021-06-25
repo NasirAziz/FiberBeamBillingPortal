@@ -27,21 +27,6 @@ class MyFirebaseFirestore {
                 }
         }
 
-        fun getCustomers(context:Context){
-            var customer: NewCustomer?
-            FirebaseFirestore.getInstance().collection("Customers")
-                .get()
-                .addOnSuccessListener {
-                    for( document in it) {
-                        customer = document.toObject<NewCustomer>(NewCustomer::class.java)
-                        customers.add(customer!!)
-                    }
-                }.addOnFailureListener {
-                    Toast.makeText(context,
-                        "Database connection failure please check your internet connection",
-                        Toast.LENGTH_SHORT).show()
-                }
-        }
     }
 
 

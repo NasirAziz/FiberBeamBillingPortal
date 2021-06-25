@@ -23,8 +23,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_rv_view_bill" />
-
-
+        tools:listitem="@layout/item_rv_pay_bill" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

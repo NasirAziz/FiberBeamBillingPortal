@@ -13,7 +13,6 @@ class MainActivity : AppCompatActivity() {
         val admin: Button = findViewById(R.id.btn_admin)
 
         MyFirebaseFirestore.getUsers(this)
-        MyFirebaseFirestore.getCustomers(this)
 
         admin.setOnClickListener {
             val intent = Intent(this, AdminDashboard::class.java)
