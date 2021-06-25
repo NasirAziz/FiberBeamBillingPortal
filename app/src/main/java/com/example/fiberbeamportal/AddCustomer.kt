@@ -44,6 +44,7 @@ class AddCustomer : AppCompatActivity() {
         }
     }
 
+
     private fun validate():Boolean{
         return binding.edtname.text.toString().isNullOrEmpty() ||
                 binding.edtadress.text.toString().isNullOrEmpty()||

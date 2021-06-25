@@ -1,13 +1,49 @@
 package com.example.fiberbeamportal
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAdminDashboardBinding
+import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
+import com.example.fiberbeamportal.model.NewCustomer
+import com.google.firebase.firestore.FirebaseFirestore
 
 class AdminDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminDashboardBinding
+    fun getCustomers(context: Context) {
+        var customer: NewCustomer?
+        FirebaseFirestore.getInstance().collection("Customers")
+                .get()
+                .addOnSuccessListener {
 
+                    for (document in it) {
+                        customer = document.toObject<NewCustomer>(NewCustomer::class.java)
+                        MyFirebaseFirestore.customers.add(customer!!)
+
+                    }
+                    var paid:Int = 0
+                    var unpaid:Int=0
+                    val totalcustomer:String=MyFirebaseFirestore.customers.size.toString()
+                    for(customer in MyFirebaseFirestore.customers){
+                        if (customer.status == "Paid"){
+                            paid++
+                        }
+                        else{
+                            unpaid++
+                        }
+                        binding.tvTotalCustomers.text= paid.toString()
+                        binding.tvTotalPaid.text = paid.toString()
+                        binding.tvTotalUnpaid.text = unpaid.toString()
+
+                    }
+                }.addOnFailureListener {
+                    Toast.makeText(context,
+                            "Database connection failure please check your internet connection",
+                            Toast.LENGTH_SHORT).show()
+                }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
