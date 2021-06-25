@@ -3,6 +3,7 @@ package com.example.fiberbeamportal.adapter
 import com.example.fiberbeamportal.model.NewCustomer
 
 import android.content.Context
+import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -59,6 +60,11 @@ class PayBillAdapter(val context: Context, private val customers: MutableList<Ne
             holder.status.text = data.status
             holder.date.text = data.dateofconnection
             holder.bill.text = data.bill
+            if(data.status == "Paid")
+                holder.status.setTextColor(Color.GREEN)
+            else
+                holder.status.setTextColor(Color.RED)
+
         }
     }
 

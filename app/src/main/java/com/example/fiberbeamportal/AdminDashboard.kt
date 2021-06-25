@@ -63,7 +63,7 @@ class AdminDashboard : AppCompatActivity() {
             startActivity(intent)
         }
         binding.btnViewBills.setOnClickListener {
-            val intent = Intent(this, AddCustomer::class.java)//TODO
+            val intent = Intent(this, PayBill::class.java)
             startActivity(intent)
         }
     }
