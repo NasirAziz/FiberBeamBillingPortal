@@ -1,6 +1,5 @@
 package com.example.fiberbeamportal
 
-import android.os.Binder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +7,8 @@ import com.example.fiberbeamportal.databinding.ActivityAddCustomerBinding
 import com.example.fiberbeamportal.model.NewCustomer
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddCustomer : AppCompatActivity() {
     private  lateinit var binding: ActivityAddCustomerBinding
@@ -27,8 +28,20 @@ class AddCustomer : AppCompatActivity() {
                 val designation = binding.edtdesignation.text.toString()
                 val bill = binding.edtbill.text.toString()
                 val phno = binding.edtphno.text.toString()
-                val dateofconnection = binding.edtdateofconnection.text.toString()
-                val customer = NewCustomer(name,designation,bill,dateofconnection,adress,phno,"Unpaid")
+                val dateOfConnection = binding.edtdateofconnection.text.toString()
+
+                val customer:NewCustomer
+
+                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                val currentDate = sdf.format(Date())
+                val halfMonthDate = 15
+                val currentDay = "${currentDate[0]}"+"${currentDate[1]}"
+
+                customer = if(currentDay.toInt() < halfMonthDate)
+                    NewCustomer(name,designation,bill,dateOfConnection,adress,phno,"Unpaid")
+                else
+                    NewCustomer(name,designation,bill,dateOfConnection,adress,phno,"Paid")
+                //TODO review Above added code logic
                 try {
                     FirebaseFirestore.getInstance().collection("Customers").document(phno)
                             .set(customer).addOnSuccessListener {
@@ -38,7 +51,7 @@ class AddCustomer : AppCompatActivity() {
                                 Toast.makeText(this, "Network Or Other issue", Toast.LENGTH_SHORT).show()
                             }
                 } catch (e: Exception) {
-                    Toast.makeText(this, "Internet Connection Error", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Internet Connection or Server Error", Toast.LENGTH_SHORT).show()
                 }
             }
         }
