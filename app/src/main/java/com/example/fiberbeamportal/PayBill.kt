@@ -14,19 +14,19 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 class PayBill : AppCompatActivity() {
+
     private lateinit var binding: ActivityPayBillBinding
     var position1 =-1
     var customer: MutableList<NewCustomer> = mutableListOf()
     lateinit var adapter: PayBillAdapter
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPayBillBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
         getCustomers(this)
-
 
         binding.include.btnCancel.setOnClickListener {
             binding.rvPayBills.visibility = View.VISIBLE
@@ -44,7 +44,7 @@ class PayBill : AppCompatActivity() {
                 currentCustomer.dateofconnection =  currentDate.toString()
                 currentCustomer.status = "Paid"
 
-                FirebaseFirestore.getInstance()
+                MyFirebaseFirestore.database
                     .collection("Customers")
                     .document(currentCustomer.phone)
                     .set(currentCustomer)
@@ -58,10 +58,14 @@ class PayBill : AppCompatActivity() {
                         binding.rvPayBills.visibility = View.VISIBLE
                         val layout = findViewById<View>(R.id.include)
                         layout.visibility = View.GONE
+
+                       // MyFirebaseFirestore.database.terminate()
                     }
                 //TODO review and test above listeners
             }else{
-                Toast.makeText(this,"Please enter valid bill amount.",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    "Please enter valid bill amount.",
+                    Toast.LENGTH_SHORT).show()
 
             }
 

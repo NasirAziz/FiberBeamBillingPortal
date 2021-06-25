@@ -7,13 +7,16 @@ import com.example.fiberbeamportal.model.NewUser
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MyFirebaseFirestore {
+   private val _database = FirebaseFirestore.getInstance()
+
     companion object{
+         val database get() = MyFirebaseFirestore()._database
          val users: MutableList<NewUser?> = mutableListOf()
          val customers: MutableList<NewCustomer> = mutableListOf()
 
         fun getUsers(context:Context){
             var user:NewUser?
-            FirebaseFirestore.getInstance().collection("users")
+            database.collection("users")
                 .get()
                 .addOnSuccessListener {
                     for( document in it) {
@@ -25,6 +28,7 @@ class MyFirebaseFirestore {
                         "Database connection failure please check your internet connection",
                         Toast.LENGTH_SHORT).show()
                 }
+            //database.terminate()
         }
 
     }
