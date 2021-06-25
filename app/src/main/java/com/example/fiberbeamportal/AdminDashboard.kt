@@ -8,12 +8,12 @@ import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAdminDashboardBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewCustomer
-import com.example.fiberbeamportal.model.freecustomer
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AdminDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminDashboardBinding
-    fun getCustomers(context: Context) {
+
+    private fun getCustomers(context: Context) {
         var customer: NewCustomer?
         FirebaseFirestore.getInstance().collection("Customers")
                 .get()
@@ -22,11 +22,11 @@ class AdminDashboard : AppCompatActivity() {
                     for (document in it) {
                         customer = document.toObject<NewCustomer>(NewCustomer::class.java)
                         MyFirebaseFirestore.customers.add(customer!!)
-
                     }
+                    
                     var paid:Int = 0
                     var unpaid:Int=0
-                    val totalcustomer:String=MyFirebaseFirestore.customers.size.toString()
+                    val totalcustomer = MyFirebaseFirestore.customers.size.toString()
                     for(customer in MyFirebaseFirestore.customers){
                         if (customer.status == "Paid"){
                             paid++
@@ -34,7 +34,7 @@ class AdminDashboard : AppCompatActivity() {
                         else{
                             unpaid++
                         }
-                        binding.tvTotalCustomers.text= paid.toString()
+                        binding.tvTotalCustomers.text= totalcustomer
                         binding.tvTotalPaid.text = paid.toString()
                         binding.tvTotalUnpaid.text = unpaid.toString()
 
@@ -52,6 +52,7 @@ class AdminDashboard : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
+        getCustomers(this)
         binding.btnAddNewUser.setOnClickListener {
             val intent = Intent(this, AddNewUser::class.java)
             startActivity(intent)
@@ -60,12 +61,17 @@ class AdminDashboard : AppCompatActivity() {
             val intent = Intent(this, AddCustomer::class.java)
             startActivity(intent)
         }
-        binding.btnFreeCustomer.setOnClickListener {
+        binding.btnAddFreeCustomer.setOnClickListener {
             val intent = Intent(this, FreeCustomer::class.java)
             startActivity(intent)
         }
         binding.btnViewBills.setOnClickListener {
             val intent = Intent(this, PayBill::class.java)
+            startActivity(intent)
+        }
+        binding.btnViewFreeCustomers.setOnClickListener {
+            val intent = Intent(this, FreeCustomer::class.java)
+            intent.putExtra("key","view")
             startActivity(intent)
         }
     }

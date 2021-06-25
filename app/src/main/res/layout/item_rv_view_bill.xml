@@ -51,7 +51,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/appCompatTextView" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvRefNo"
+                android:id="@+id/tvFreeCustomerPhoneNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="1234567890"
@@ -80,7 +80,7 @@
                 android:textSize="18sp"
                 android:textColor="#66BB6A"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvRefNo" />
+                app:layout_constraintTop_toBottomOf="@+id/tvFreeCustomerPhoneNo" />
 
 
 

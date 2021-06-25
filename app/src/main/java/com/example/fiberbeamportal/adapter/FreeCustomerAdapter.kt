@@ -13,13 +13,12 @@ import com.example.fiberbeamportal.model.freecustomer
 class FreeCustomerAdapter(val context: Context, private val customers:MutableList<freecustomer>):
     RecyclerView.Adapter<FreeCustomerAdapter.MyViewHolder>() {
 
-    private var filteredCustomers: MutableList<freecustomer> = customers as MutableList<freecustomer>
+    private var filteredCustomers: MutableList<freecustomer> = customers
 
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val name:TextView = view.findViewById(R.id.tvCustomerName)
-        val phoneno:TextView = view.findViewById(R.id.tvPhoneNo)
+        val phoneno:TextView = view.findViewById(R.id.tvFreeCustomerPhoneNo)
         val status:TextView = view.findViewById(R.id.tvStatus)
-
 
     }
 
@@ -32,7 +31,7 @@ class FreeCustomerAdapter(val context: Context, private val customers:MutableLis
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        if(filteredCustomers != null) {
+        if(filteredCustomers.isNotEmpty()) {
             val data = filteredCustomers[position]
             holder.name.text = data.name
             holder.phoneno.text = data.phone

@@ -8,6 +8,7 @@
     tools:context=".FreeCustomer" >
 
     <LinearLayout
+        android:id="@+id/free_customer_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -98,6 +99,7 @@
             android:text="Add Free Customer" />
 
     </LinearLayout>
+
     <include layout="@layout/free_customer_rv_layout"
         android:id="@+id/free_rv"
         android:layout_width="match_parent"

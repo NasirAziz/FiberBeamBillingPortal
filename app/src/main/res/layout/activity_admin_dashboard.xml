@@ -107,10 +107,10 @@
             android:backgroundTint="#42A5F5"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnFreeCustomer"
+            android:id="@+id/btn_add_free_customer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Free Customer"
+            android:text="Add Free Customer"
             android:textColor="@color/white"
             android:backgroundTint="#42A5F5"/>
 
@@ -120,6 +120,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="View Bills"
+            android:textColor="@color/white"
+            android:backgroundTint="#42A5F5"/>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnViewFreeCustomers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="View Free Customers"
             android:textColor="@color/white"
             android:backgroundTint="#42A5F5"/>
 

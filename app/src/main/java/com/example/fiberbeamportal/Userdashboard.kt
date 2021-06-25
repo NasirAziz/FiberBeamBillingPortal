@@ -11,10 +11,10 @@ class Userdashboard : AppCompatActivity() {
     private lateinit var binding: ActivityUserdashboardBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_userdashboard)
         binding = ActivityUserdashboardBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+
         binding.btnAddCustomer.setOnClickListener {
             val intent = Intent (this,AddCustomer::class.java )
             startActivity(intent)
@@ -25,7 +25,7 @@ class Userdashboard : AppCompatActivity() {
             startActivity(intent)
 
         }
-        binding.btnFreeCustomer.setOnClickListener {
+        binding.btnAddFreeCustomer.setOnClickListener {
             val intent = Intent (this,FreeCustomer::class.java )
             startActivity(intent)
 
