@@ -46,7 +46,6 @@ class AdminDashboard : AppCompatActivity() {
                 }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        getCustomers(this)
         super.onCreate(savedInstanceState)
         binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
         val view = binding.root
