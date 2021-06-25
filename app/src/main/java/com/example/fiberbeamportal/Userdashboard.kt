@@ -25,6 +25,12 @@ class Userdashboard : AppCompatActivity() {
             startActivity(intent)
 
         }
+        binding.btnFreeCustomer.setOnClickListener {
+            val intent = Intent (this,FreeCustomer::class.java )
+            startActivity(intent)
+
+        }
+
 
     }
 }

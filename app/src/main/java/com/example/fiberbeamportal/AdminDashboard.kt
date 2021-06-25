@@ -8,6 +8,7 @@ import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAdminDashboardBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewCustomer
+import com.example.fiberbeamportal.model.freecustomer
 import com.google.firebase.firestore.FirebaseFirestore
 
 class AdminDashboard : AppCompatActivity() {
@@ -45,6 +46,7 @@ class AdminDashboard : AppCompatActivity() {
                 }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
+        getCustomers(this)
         super.onCreate(savedInstanceState)
         binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
         val view = binding.root
@@ -59,7 +61,7 @@ class AdminDashboard : AppCompatActivity() {
             startActivity(intent)
         }
         binding.btnFreeCustomer.setOnClickListener {
-            val intent = Intent(this, AddCustomer::class.java)
+            val intent = Intent(this, FreeCustomer::class.java)
             startActivity(intent)
         }
         binding.btnViewBills.setOnClickListener {
