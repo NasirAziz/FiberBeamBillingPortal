@@ -29,11 +29,18 @@ class User : AppCompatActivity() {
            for (user in MyFirebaseFirestore.users) {
                val email = user?.email
                val password = user?.password
+               val name:String
+               val adress:String
 
                if (binding.editTextTextPersonName3.text.toString() == email
                    && binding.editTextTextPassword.text.toString() == password) {
                    isUserFound = true
+                   name=user.name
+                   adress=user.address
                    val intent = Intent(this, Userdashboard::class.java)
+                   intent.putExtra("name" ,name)
+                   intent.putExtra("adress" ,adress)
+
                    startActivity(intent)
                    finish()
                }

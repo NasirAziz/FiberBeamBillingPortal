@@ -30,7 +30,10 @@ class Userdashboard : AppCompatActivity() {
             startActivity(intent)
 
         }
-
+        val name=intent.getStringExtra("name")
+        val adress=intent.getStringExtra("adress")
+        binding.tvUserName.text=name
+        binding.tvAddress.text = adress
 
     }
 }
