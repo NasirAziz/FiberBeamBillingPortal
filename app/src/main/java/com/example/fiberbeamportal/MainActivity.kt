@@ -52,13 +52,13 @@ class MainActivity : AppCompatActivity() {
         MyFirebaseFirestore.getUsers(this)
 
         admin.setOnClickListener {
-            val intent = Intent(this, AdminDashboard::class.java)
+            val intent = Intent(this, Admin::class.java)
             startActivity(intent)
         }
 
         val user:Button = findViewById(R.id.btn_user)
         user.setOnClickListener {
-            val intent = Intent(this, Userdashboard::class.java)
+            val intent = Intent(this, User::class.java)
             startActivity(intent)
         }
 
