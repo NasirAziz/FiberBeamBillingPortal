@@ -35,12 +35,12 @@ class AddCustomer : AppCompatActivity() {
                 val dateOfConnection = binding.edtdateofconnection.text.toString()
 
                 val customer:NewCustomer
-                val pkglis:Spinner=binding.spPkg
-                ArrayAdapter.createFromResource(this,R.array.Package,android.R.layout.simple_spinner_item)
+                val pkglis:Spinner = binding.spPkg
+               /* ArrayAdapter.createFromResource(this,R.array.Package,android.R.layout.simple_spinner_item)
                         .also { adapter->
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                             pkglis.adapter=adapter
-                        }
+                        }*/
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val currentDate = sdf.format(Date())
                 val halfMonthDate = 15
