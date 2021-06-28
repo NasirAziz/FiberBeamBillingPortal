@@ -29,12 +29,12 @@ class AddNewUser : AppCompatActivity() {
                 val password =  binding.edtpassword.text.toString()
                 val address =  binding.edtadress.text.toString()
                 val pflist: Spinner =binding.pfNopfUser
-                ArrayAdapter.createFromResource(this,R.array.Package,android.R.layout.simple_spinner_item)
+                ArrayAdapter.createFromResource(this,R.array.pf,android.R.layout.simple_spinner_item)
                         .also { adapter->
                             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                             pflist.adapter=adapter
                         }
-                val user = NewUser(name, email, phone, password, address,pflist.toString())
+                val user = NewUser(name, email, phone, password, address,pflist.selectedItem.toString())
 
                 try{
                     FirebaseFirestore.getInstance()
