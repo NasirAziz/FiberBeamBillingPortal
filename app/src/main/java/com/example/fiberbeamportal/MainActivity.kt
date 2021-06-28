@@ -1,16 +1,17 @@
 package com.example.fiberbeamportal
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.google.firebase.firestore.DocumentReference
 import java.text.SimpleDateFormat
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
     init {
 
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
@@ -48,7 +49,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val admin: Button = findViewById(R.id.btn_admin)
-
         MyFirebaseFirestore.getUsers(this)
 
         admin.setOnClickListener {

@@ -15,17 +15,18 @@ class AddCustomer : AppCompatActivity() {
     private  lateinit var binding: ActivityAddCustomerBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_add_customer)
+
         binding = ActivityAddCustomerBinding.inflate(layoutInflater)
         val view=binding.root
         setContentView(view)
+
         binding.btncreatecustomer.setOnClickListener {
 
             if (validate()) {
                 Toast.makeText(this, "Please Fill All The Fields", Toast.LENGTH_SHORT).show()
             } else {
                 val name = binding.edtname.text.toString()
-                val adress = binding.edtadress.text.toString()
+                val address = binding.edtadress.text.toString()
                 val designation = binding.edtdesignation.text.toString()
                 val bill = binding.edtbill.text.toString()
                 val phno = binding.edtphno.text.toString()
@@ -39,9 +40,9 @@ class AddCustomer : AppCompatActivity() {
                 val currentDay = "${currentDate[0]}"+"${currentDate[1]}"
 
                 customer = if(currentDay.toInt() < halfMonthDate)
-                    NewCustomer(name,designation,bill,dateOfConnection,adress,phno,"Unpaid")
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Unpaid")
                 else
-                    NewCustomer(name,designation,bill,dateOfConnection,adress,phno,"Paid")
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Paid")
                 //TODO review Above added code logic
                 try {
                     FirebaseFirestore.getInstance().collection("Customers").document(phno)
