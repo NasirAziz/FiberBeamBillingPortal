@@ -84,44 +84,67 @@
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_gravity="center_vertical">
+        android:layout_weight="1"
+        android:gravity="bottom"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="30dp">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddNewUser"
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add New User"
-            android:textColor="@color/white"
-            android:backgroundTint="#42A5F5"/>
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnAddNewCustomer"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddNewUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add New User"
+                android:textColor="@color/white"
+                android:backgroundTint="#42A5F5"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnAddNewCustomer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Add Customer"
+                android:textColor="@color/white"
+                android:backgroundTint="#42A5F5"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Add Customer"
-            android:textColor="@color/white"
-            android:backgroundTint="#42A5F5"/>
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_free_customer"
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_add_free_customer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add Free Customer"
+                android:textColor="@color/white"
+                android:layout_weight="1"
+                android:backgroundTint="#42A5F5"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnViewBills"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View Bills"
+                android:textColor="@color/white"
+                android:backgroundTint="#42A5F5"/>
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Add Free Customer"
-            android:textColor="@color/white"
-            android:backgroundTint="#42A5F5"/>
+            android:orientation="horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnViewBills"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="View Bills"
-            android:textColor="@color/white"
-            android:backgroundTint="#42A5F5"/>
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnViewFreeCustomers"
             android:layout_width="match_parent"
@@ -131,6 +154,15 @@
             android:textColor="@color/white"
             android:backgroundTint="#42A5F5"/>
 
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnViewUsers"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="View Users"
+                android:textColor="@color/white"
+                android:backgroundTint="#42A5F5"/>
+        </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -87,6 +87,11 @@ class AdminDashboard : AppCompatActivity() {
             intent.putExtra("key","view")
             startActivity(intent)
         }
+        binding.btnViewUsers.setOnClickListener {
+            val intent = Intent(this, ShowUsersActivity::class.java)
+            intent.putExtra("key","view")
+            startActivity(intent)
+        }
     }
 
     override fun onResume() {

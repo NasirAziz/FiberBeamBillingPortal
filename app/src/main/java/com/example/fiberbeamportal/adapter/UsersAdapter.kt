@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.fiberbeamportal.R
 import com.example.fiberbeamportal.model.NewUser
 
-class UsersAdapter(val context: Context, private val users: MutableList<NewUser>):
+class UsersAdapter(val context: Context, private val users: MutableList<NewUser?>):
     RecyclerView.Adapter<UsersAdapter.MyViewHolder>() {
 
     private var onClickListener: ClickListener? = null
@@ -50,10 +50,10 @@ class UsersAdapter(val context: Context, private val users: MutableList<NewUser>
 
         if(users.isNotEmpty()) {
             val data = users[position]
-            holder.name.text = data.name
-            holder.phoneNo.text = data.phone
-            holder.paf.text = data.isPAF.toString()//TODO
-            holder.address.text = data.address
+            holder.name.text = data?.name
+            holder.phoneNo.text = data?.phone
+            holder.paf.text = data?.isPAF.toString()//TODO
+            holder.address.text = data?.address
         }
     }
 
