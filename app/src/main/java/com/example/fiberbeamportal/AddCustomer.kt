@@ -2,6 +2,8 @@ package com.example.fiberbeamportal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAddCustomerBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
@@ -33,16 +35,21 @@ class AddCustomer : AppCompatActivity() {
                 val dateOfConnection = binding.edtdateofconnection.text.toString()
 
                 val customer:NewCustomer
-
+                val pkglis:Spinner=binding.spPkg
+                ArrayAdapter.createFromResource(this,R.array.Package,android.R.layout.simple_spinner_item)
+                        .also { adapter->
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            pkglis.adapter=adapter
+                        }
                 val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
                 val currentDate = sdf.format(Date())
                 val halfMonthDate = 15
                 val currentDay = "${currentDate[0]}"+"${currentDate[1]}"
 
                 customer = if(currentDay.toInt() < halfMonthDate)
-                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Unpaid")
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Unpaid",pkglis.toString())
                 else
-                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Paid")
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Paid",pkglis.toString())
                 //TODO review Above added code logic
                 try {
                     FirebaseFirestore.getInstance().collection("Customers").document(phno)

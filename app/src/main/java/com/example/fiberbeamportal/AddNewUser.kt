@@ -2,6 +2,8 @@ package com.example.fiberbeamportal
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAddNewUserBinding
 import com.example.fiberbeamportal.model.NewUser
@@ -26,8 +28,13 @@ class AddNewUser : AppCompatActivity() {
                 val phone =  binding.edtphone.text.toString()
                 val password =  binding.edtpassword.text.toString()
                 val address =  binding.edtadress.text.toString()
-
-                val user = NewUser(name, email, phone, password, address)
+                val pflist: Spinner =binding.pfNopfUser
+                ArrayAdapter.createFromResource(this,R.array.Package,android.R.layout.simple_spinner_item)
+                        .also { adapter->
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                            pflist.adapter=adapter
+                        }
+                val user = NewUser(name, email, phone, password, address,pflist.toString())
 
                 try{
                     FirebaseFirestore.getInstance()

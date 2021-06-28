@@ -107,7 +107,7 @@
             android:layout_marginTop="40dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
-            android:autofillHints="Glucose Level Checking Habbit"
+            android:autofillHints="Select Packege of your customer"
             android:id="@+id/sp_pkg"
             />
 

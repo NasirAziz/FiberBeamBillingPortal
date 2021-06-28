@@ -5,8 +5,8 @@ data class NewUser(val name:String,
                    val phone:String,
                    val password:String,
                    val address:String,
-                   val isPAF:Boolean)
+                   val isPAF:String)
 {
     constructor():
-            this("", "", "", "","",false)
+            this("", "", "", "","","")
 }
