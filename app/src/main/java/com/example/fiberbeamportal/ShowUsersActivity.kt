@@ -18,8 +18,6 @@ import kotlin.properties.Delegates
 
 class ShowUsersActivity : AppCompatActivity() {
 
-//        constructor():
-//        this()
 
     private lateinit var adapter:UsersAdapter
     private lateinit var binding:ActivityShowUsersBinding

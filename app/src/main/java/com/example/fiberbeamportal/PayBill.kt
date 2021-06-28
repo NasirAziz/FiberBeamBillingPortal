@@ -41,7 +41,6 @@ class PayBill : AppCompatActivity() {
         else{
             Log.i("PayBillActivity","MyFirebaseFirestore.customers.isNotEmpty")
             customer.removeAll{ true }
-
             customer.addAll(MyFirebaseFirestore.customers)
             adapter = PayBillAdapter(this,customer)
             updateUI(adapter)
@@ -159,6 +158,9 @@ private fun checkAndAskForPermission(){
     }
 
     private fun updateUI(adapter: PayBillAdapter) {
+//        customer.removeAll{ true }
+//        customer.addAll(MyFirebaseFirestore.customers)
+
         binding.rvPayBills.adapter = adapter
         adapter.notifyDataSetChanged()
 
@@ -186,18 +188,21 @@ private fun checkAndAskForPermission(){
             .get()
             .addOnSuccessListener {
                 this.customer.removeAll{ true }
+                MyFirebaseFirestore.customers.removeAll { true }
                 for( document in it) {
                     customer = document.toObject<NewCustomer>(NewCustomer::class.java)
                     MyFirebaseFirestore.customers.add(customer!!)
                     this.customer.add(customer!!)
                 }
-                Log.i("PayBillActivity","after bill paid customers ${this.customer.size}")
+                Log.i("PayBillActivity","after bill paid customers ${MyFirebaseFirestore.customers.size}")
 
             }.addOnFailureListener {
                 Toast.makeText(context,
                     "Database connection failure please check your internet connection",
                     Toast.LENGTH_SHORT).show()
             }.addOnCompleteListener {
+                this.customer.removeAll{ true }
+                this.customer.addAll(MyFirebaseFirestore.customers)
                 adapter = PayBillAdapter(this, this.customer)
                 updateUI(adapter)
 
