@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         MyFirebaseFirestore.getUsers(this)
 
         admin.setOnClickListener {
-            val intent = Intent(this, Admin::class.java)
+            val intent = Intent(this, AdminDashboard::class.java)
             startActivity(intent)
         }
 

@@ -102,8 +102,7 @@ class PayBill : AppCompatActivity() {
         })
 
     }
-
-    fun getCustomers(context: Context){
+    private fun getCustomers(context: Context){
         var customer: NewCustomer?
         FirebaseFirestore.getInstance().collection("Customers")
             .get()
