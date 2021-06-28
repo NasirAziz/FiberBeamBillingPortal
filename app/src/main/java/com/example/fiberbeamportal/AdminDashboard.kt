@@ -15,7 +15,6 @@ class AdminDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminDashboardBinding
 
     private fun getCustomers(context: Context) {
-        Log.i("AdminDashboard","getCustomer called")
         var customer: NewCustomer?
 
        // Log.i("AdminDashboard","$paid")

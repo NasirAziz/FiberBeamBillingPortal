@@ -3,10 +3,9 @@ package com.example.fiberbeamportal.firebase
 import android.content.Context
 import android.util.Log
 import android.widget.Toast
-import com.example.fiberbeamportal.adapter.PayBillAdapter
 import com.example.fiberbeamportal.model.NewCustomer
 import com.example.fiberbeamportal.model.NewUser
-import com.example.fiberbeamportal.model.freecustomer
+import com.example.fiberbeamportal.model.FreeCustomer
 import com.google.firebase.firestore.FirebaseFirestore
 
 class MyFirebaseFirestore {
@@ -16,7 +15,7 @@ class MyFirebaseFirestore {
          val database get() = MyFirebaseFirestore()._database
          val users: MutableList<NewUser?> = mutableListOf()
          val customers: MutableList<NewCustomer> = mutableListOf()
-         val freeCustomers: MutableList<freecustomer> = mutableListOf()
+         val FREE_CUSTOMERS: MutableList<FreeCustomer> = mutableListOf()
 
         fun getUsers(context:Context){
             var user:NewUser?

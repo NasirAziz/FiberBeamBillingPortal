@@ -8,12 +8,12 @@ import android.widget.Adapter
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.fiberbeamportal.R
-import com.example.fiberbeamportal.model.freecustomer
+import com.example.fiberbeamportal.model.FreeCustomer
 
-class FreeCustomerAdapter(val context: Context, private val customers:MutableList<freecustomer>):
+class FreeCustomerAdapter(val context: Context, private val customers:MutableList<FreeCustomer>):
     RecyclerView.Adapter<FreeCustomerAdapter.MyViewHolder>() {
 
-    private var filteredCustomers: MutableList<freecustomer> = customers
+    private var filteredCustomers: MutableList<FreeCustomer> = customers
 
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val name:TextView = view.findViewById(R.id.tvCustomerName)

@@ -6,20 +6,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.view.SupportActionModeWrapper
 import com.example.fiberbeamportal.adapter.FreeCustomerAdapter
-import com.example.fiberbeamportal.adapter.PayBillAdapter
 import com.example.fiberbeamportal.databinding.ActivityFreeCustomerBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
-import com.example.fiberbeamportal.model.NewCustomer
-import com.example.fiberbeamportal.model.freecustomer
+import com.example.fiberbeamportal.model.FreeCustomer
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.ktx.Firebase
 
 class FreeCustomer : AppCompatActivity() {
 
     private lateinit var binding:ActivityFreeCustomerBinding
-    private val freeCustomers:MutableList<freecustomer> = mutableListOf()
+    private val freeCustomers:MutableList<FreeCustomer> = mutableListOf()
     lateinit var adapter: FreeCustomerAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,11 +34,10 @@ class FreeCustomer : AppCompatActivity() {
         }
 
         binding.btnaddfreecustomer.setOnClickListener {
-            val customer = freecustomer(binding.edtname.text.toString(),binding.edtdesignation.text.toString()
-                    ,binding.edtdateofconnection.text.toString(),
-                    binding.edtadress.text.toString(),
-                    binding.edtphno.text.toString(),
-                    "Free")
+            val customer = FreeCustomer(binding.edtname.text.toString(),binding.edtdesignation.text.toString(),binding.edtdateofconnection.text.toString(),
+                binding.edtadress.text.toString(),
+                binding.edtphno.text.toString(),
+                "Free")
 
             MyFirebaseFirestore.database.collection("freeuser")
                     .document(binding.edtphno.text.toString())
@@ -60,17 +55,17 @@ class FreeCustomer : AppCompatActivity() {
     }
 
     private fun getFreeCustomers(context: Context) {
-        var freeCustomer: freecustomer?
+        var freeCustomer: FreeCustomer?
         FirebaseFirestore.getInstance().collection("freeuser")
             .get()
             .addOnSuccessListener {
 
                 for (document in it) {
-                    freeCustomer = document.toObject<freecustomer>(freecustomer::class.java)
-                    MyFirebaseFirestore.freeCustomers.add(freeCustomer!!)
+                    freeCustomer = document.toObject<FreeCustomer>(FreeCustomer::class.java)
+                    MyFirebaseFirestore.FREE_CUSTOMERS.add(freeCustomer!!)
                 }
                 Log.i("FreeCustomer","$freeCustomers")
-                freeCustomers.addAll(MyFirebaseFirestore.freeCustomers)
+                freeCustomers.addAll(MyFirebaseFirestore.FREE_CUSTOMERS)
                 Log.i("FreeCustomer","$freeCustomers 22")
                 adapter = FreeCustomerAdapter(this, freeCustomers)
                 updateUI(adapter)
