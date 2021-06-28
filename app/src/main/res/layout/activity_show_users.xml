@@ -5,6 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ShowUsersActivity">
+    <include
+        android:id="@+id/include_edit_user"
+        android:visibility="gone"
+        layout="@layout/edit_user_layout"/>
+
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rvShowUsers"
     android:layout_width="match_parent"
