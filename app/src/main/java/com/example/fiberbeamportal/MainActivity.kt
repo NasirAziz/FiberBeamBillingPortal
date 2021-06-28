@@ -7,6 +7,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.UserDataReader
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -58,7 +59,7 @@ class MainActivity : AppCompatActivity() {
 
         val user:Button = findViewById(R.id.btn_user)
         user.setOnClickListener {
-            val intent = Intent(this, User::class.java)
+            val intent = Intent(this, Userdashboard::class.java)
             startActivity(intent)
         }
 
