@@ -70,4 +70,5 @@ class AddCustomer : AppCompatActivity() {
                 binding.edtdateofconnection.text.toString().isNullOrEmpty()
 
     }
+
 }
