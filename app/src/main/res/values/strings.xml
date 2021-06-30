@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Fiber Beam Portal</string>
+    <string name="address">Address</string>
     <string-array name="Package">
         <item>4mb</item>
         <item>6mb</item>
@@ -7,8 +8,9 @@
         <item>10mb</item>
         <item>15mb</item>
     </string-array>
-    <string-array name="pf">
+    <string-array name="TypeOFUsers">
         <item>PAF</item>
-        <item>NON_PAF</item>
+        <item>Non-PAF</item>
+
     </string-array>
 </resources>

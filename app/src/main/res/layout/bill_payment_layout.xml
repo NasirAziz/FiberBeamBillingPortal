@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.appcompat.widget.LinearLayoutCompat
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <androidx.appcompat.widget.AppCompatEditText
@@ -26,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/shape"
-            android:hint="Customer Bill"
+            android:hint="Bill Amount"
             android:padding="8dp"
             android:inputType="numberDecimal"
             android:textSize="16sp"
@@ -39,13 +40,13 @@
             app:layout_constraintTop_toBottomOf="@+id/dtCustomerNameUD" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/dtCustomerDateOfPaymentUD"
+            android:id="@+id/dtCustomerPhoneUD"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Date i.e. 18/09/2021"
+            android:hint="Phone"
             android:textSize="16sp"
             android:padding="8dp"
-            android:inputType="date"
+            android:inputType="phone"
             android:layout_marginTop="10dp"
             android:layout_marginStart="5dp"
             android:layout_marginEnd="5dp"
@@ -54,28 +55,134 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/dtCustomerBillUD"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnPaynConfirm"
-        android:layout_width="wrap_content"
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/dtCustomerAddressUD"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:hint="Address"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:inputType="date"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:backgroundTint="#42A5F5"
-        android:text="Pay and Confirm"
-        android:textColor="@color/white"
+        android:background="@drawable/shape"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dtCustomerDateOfPaymentUD" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dtCustomerBillUD"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/dtCustomerDesignationUD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Designation"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:inputType="date"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/shape"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/dtCustomerStatusUD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bill Status"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/shape"/>
+    <androidx.appcompat.widget.AppCompatEditText
+    android:id="@+id/dtCustomerPackageUD"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Package"
+    android:textSize="16sp"
+    android:padding="8dp"
+    android:inputType="text"
+    android:layout_marginTop="10dp"
+    android:layout_marginStart="5dp"
+    android:layout_marginEnd="5dp"
+    android:background="@drawable/shape"/>
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/dtCustomerDateOfPaymentUD"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date i.e. 18/09/2021"
+        android:textSize="16sp"
+        android:padding="8dp"
+        android:inputType="date"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/shape"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dtCustomerBillUD"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="8dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnDeleteCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5252"
+            android:text="Delete"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="left"
+            android:textColor="@color/white" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnEditCustomer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#42A5F5"
+            android:text="Edit"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </RelativeLayout>
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCancel"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:backgroundTint="#42A5F5"
         android:text="Cancel"
+        android:layout_weight="1"
+        android:layout_alignParentStart="true"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="@+id/btnPaynConfirm"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnPaynConfirm" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnPaynConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:backgroundTint="#42A5F5"
+            android:text="Confirm and Pay"
+            android:layout_weight="1"
+            android:elevation="5dp"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
