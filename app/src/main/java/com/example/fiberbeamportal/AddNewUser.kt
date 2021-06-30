@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityAddNewUserBinding
+import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewUser
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception

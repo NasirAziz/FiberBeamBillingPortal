@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val admin: Button = findViewById(R.id.btn_admin)
-        MyFirebaseFirestore.getUsers(this)
 
         admin.setOnClickListener {
             val intent = Intent(this, AdminDashboard::class.java)

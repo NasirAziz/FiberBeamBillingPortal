@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Delta Telecom Portal</string>
     <string name="address">Address</string>
+    <string name="refresh">Refresh</string>
     <string-array name="Package">
         <item>4mb</item>
         <item>6mb</item>

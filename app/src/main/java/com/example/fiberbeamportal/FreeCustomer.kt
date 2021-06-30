@@ -39,7 +39,7 @@ class FreeCustomer : AppCompatActivity() {
                 binding.edtphno.text.toString(),
                 "Free")
 
-            MyFirebaseFirestore.database.collection("freeuser")
+            MyFirebaseFirestore.database.collection("freeCustomers")
                     .document(binding.edtphno.text.toString())
                     .set(customer).addOnSuccessListener {
                         Toast.makeText(this,"Free Customer Added",Toast.LENGTH_SHORT).show()
@@ -56,7 +56,7 @@ class FreeCustomer : AppCompatActivity() {
 
     private fun getFreeCustomers(context: Context) {
         var freeCustomer: FreeCustomer?
-        FirebaseFirestore.getInstance().collection("freeuser")
+        FirebaseFirestore.getInstance().collection("freeCustomers")
             .get()
             .addOnSuccessListener {
 

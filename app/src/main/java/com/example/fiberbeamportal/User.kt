@@ -10,7 +10,9 @@ import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 class User : AppCompatActivity() {
     private lateinit var binding: ActivityUserBinding
 
-
+    init {
+        MyFirebaseFirestore.getUsers(this)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user)
@@ -26,7 +28,7 @@ class User : AppCompatActivity() {
                val email = user?.email
                val password = user?.password
                val name:String
-               val address:String
+               val address: String
 
                if (binding.editTextTextPersonName3.text.toString() == email
                    && binding.editTextTextPassword.text.toString() == password) {

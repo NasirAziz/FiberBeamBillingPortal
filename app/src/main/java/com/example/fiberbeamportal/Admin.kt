@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.fiberbeamportal.databinding.ActivityAdminBinding
+import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 
 class Admin : AppCompatActivity() {
 
@@ -11,7 +12,8 @@ class Admin : AppCompatActivity() {
     val ADMIN_NAME = "Haseeb"
     val PASSWORD = "Pakistan92"
 
-
+    init {
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAdminBinding.inflate(layoutInflater)

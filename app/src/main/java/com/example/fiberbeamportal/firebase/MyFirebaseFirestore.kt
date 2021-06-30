@@ -22,6 +22,7 @@ class MyFirebaseFirestore {
             database.collection("users")
                 .get()
                 .addOnSuccessListener {
+                    users.removeAll { true }
                     for( document in it) {
                         user = document.toObject<NewUser>(NewUser::class.java)
                         users.add(user)
