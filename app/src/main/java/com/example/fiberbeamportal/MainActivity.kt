@@ -1,5 +1,6 @@
 package com.example.fiberbeamportal
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -7,7 +8,6 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.UserDataReader
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,17 +51,40 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val admin: Button = findViewById(R.id.btn_admin)
+        val sharedPref = getSharedPreferences(getString(R.string.shared_pref_name),Context.MODE_PRIVATE)
 
         admin.setOnClickListener {
-            val intent = Intent(this, AdminDashboard::class.java)
-            startActivity(intent)
+            Log.i("MyActivityMain",sharedPref.getString(getString(R.string.admin_name),"null").toString())
+            if(sharedPref.contains(getString(R.string.admin_name))) {
+                val intent = Intent(this, AdminDashboard::class.java)
+                startActivity(intent)
+            }else{
+                Log.i("MyActivityMaine",sharedPref.getString(getString(R.string.admin_name),"null").toString())
+
+                val intent = Intent(this, Admin::class.java)
+                startActivity(intent)
+            }
         }
 
         val user:Button = findViewById(R.id.btn_user)
         user.setOnClickListener {
-            val intent = Intent(this, Userdashboard::class.java)
-            startActivity(intent)
+            if(sharedPref.contains(getString(R.string.user_name))) {
+                val intent = Intent(this, UserDashboard::class.java)
+                startActivity(intent)
+            }else{
+                Log.i("MyActivityMaine",sharedPref.getString(getString(R.string.user_name),"null").toString())
+
+                val intent = Intent(this, User::class.java)
+                startActivity(intent)
+            }
+
+
         }
 
     }
+
+//    companion object{
+//        val sharedPref: SharedPreferences = MainActivity().getPreferences(Context.MODE_PRIVATE)
+//
+//    }
 }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -78,6 +79,17 @@ class AdminDashboard : AppCompatActivity() {
                 getCustomers(this)
                 updateUI()
             }
+            R.id.logout->{
+
+                val sharedPref = getSharedPreferences(getString(R.string.shared_pref_name),Context.MODE_PRIVATE)
+                Log.i("MyActivityDash",sharedPref.getString(getString(R.string.admin_name),"").toString())
+
+                sharedPref.edit()
+                    .remove(getString(R.string.admin_name))
+                    .apply()
+
+                finish()
+            }
         }
         return super.onOptionsItemSelected(item)
     }
@@ -86,6 +98,8 @@ class AdminDashboard : AppCompatActivity() {
         binding = ActivityAdminDashboardBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
+        val sharedPref = getSharedPreferences(getString(R.string.shared_pref_name),Context.MODE_PRIVATE)
+        Log.i("MyActivityDashC",sharedPref.getString(getString(R.string.admin_name),"").toString())
 
         getUsers(this)
         getCustomers(this)

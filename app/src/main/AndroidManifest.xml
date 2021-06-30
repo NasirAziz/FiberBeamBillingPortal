@@ -17,7 +17,7 @@
         <activity android:name=".AddNewUser" />
         <activity android:name=".PayBill" />
         <activity android:name=".AddCustomer" />
-        <activity android:name=".Userdashboard" />
+        <activity android:name=".UserDashboard" />
         <activity android:name=".User" />
         <activity android:name=".Admin" />
         <activity android:name=".MainActivity">

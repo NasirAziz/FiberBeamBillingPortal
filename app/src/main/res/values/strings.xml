@@ -2,6 +2,11 @@
     <string name="app_name">Delta Telecom Portal</string>
     <string name="address">Address</string>
     <string name="refresh">Refresh</string>
+    <string name="user_address">admin_pass</string>
+    <string name="admin_name">admin_name</string>
+    <string name="logout">Logout</string>
+    <string name="shared_pref_name">com.example.fiberbeamportal</string>
+    <string name="user_name">user_name</string>
     <string-array name="Package">
         <item>4mb</item>
         <item>6mb</item>

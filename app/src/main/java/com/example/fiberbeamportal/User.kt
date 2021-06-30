@@ -1,8 +1,10 @@
 package com.example.fiberbeamportal
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.fiberbeamportal.databinding.ActivityUserBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
@@ -32,10 +34,20 @@ class User : AppCompatActivity() {
 
                if (binding.editTextTextPersonName3.text.toString() == email
                    && binding.editTextTextPassword.text.toString() == password) {
+
                    isUserFound = true
                    name=user.name
                    address=user.address
-                   val intent = Intent(this, Userdashboard::class.java)
+
+                   val sharedPref = getSharedPreferences(getString(R.string.shared_pref_name),
+                       Context.MODE_PRIVATE)
+                   with (sharedPref.edit()) {
+                       putString(getString(R.string.user_name), name)
+                       putString(getString(R.string.user_address), address)
+                       apply()
+                   }
+                   Log.i("MyActivityAdmin",sharedPref.getString(getString(R.string.user_name),"").toString())
+                   val intent = Intent(this, UserDashboard::class.java)
                    intent.putExtra("name" ,name)
                    intent.putExtra("adress" ,address)
 

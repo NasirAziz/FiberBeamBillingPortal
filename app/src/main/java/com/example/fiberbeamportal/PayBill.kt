@@ -55,40 +55,50 @@ class PayBill : AppCompatActivity() {
         }
 
         binding.include.btnPaynConfirm.setOnClickListener {
-            if (binding.include.dtCustomerBillUD.text.toString() == customer[index].bill){
+            if(customer[index].status == "Unpaid") {
+                if (binding.include.dtCustomerBillUD.text.toString() == customer[index].bill) {
 
-                val currentCustomer = customer[index]
-                var phone = ""
+                    val currentCustomer = customer[index]
+                    var phone = ""
 //                for( i in currentCustomer.phone.indices)
 //                    phone+=currentCustomer.phone[i]
-                val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-                val currentDate = sdf.format(Date())
-                currentCustomer.dateofconnection =  currentDate.toString()
-                currentCustomer.status = "Paid"
+                    val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+                    val currentDate = sdf.format(Date())
+                    currentCustomer.dateofconnection = currentDate.toString()
+                    currentCustomer.status = "Paid"
 
-                MyFirebaseFirestore.database
-                    .collection("Customers")
-                    .document(currentCustomer.phone)
-                    .set(currentCustomer)
-                    .addOnSuccessListener {
-                        Toast.makeText(this,"Bill Paid",Toast.LENGTH_SHORT).show()
-                        checkAndAskForPermission()
-                        //sendSMS("03170508334")
-                    }.addOnCompleteListener {
-                        //updateUI when bill is paid
-                        getCustomers(this)
+                    MyFirebaseFirestore.database
+                        .collection("Customers")
+                        .document(currentCustomer.phone)
+                        .set(currentCustomer)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "Bill Paid", Toast.LENGTH_SHORT).show()
+                            checkAndAskForPermission()
+                            //sendSMS("03170508334")
+                        }.addOnCompleteListener {
+                            //updateUI when bill is paid
+                            getCustomers(this)
 
-                        binding.rvPayBills.visibility = View.VISIBLE
-                        val layout = findViewById<View>(R.id.include)
-                        layout.visibility = View.GONE
+                            binding.rvPayBills.visibility = View.VISIBLE
+                            val layout = findViewById<View>(R.id.include)
+                            layout.visibility = View.GONE
 
-                       // MyFirebaseFirestore.database.terminate()
-                    }
-                //TODO review and test above listeners
+                            // MyFirebaseFirestore.database.terminate()
+                        }
+                    //TODO review and test above listeners
+                } else {
+                    Toast.makeText(
+                        this,
+                        "Please enter valid bill amount.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
             }else{
-                Toast.makeText(this,
-                    "Please enter valid bill amount.",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    this,
+                    "Bill is already Paid.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
         }
