@@ -165,7 +165,7 @@ private fun checkAndAskForPermission(){
         val sdf = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
         val currentDate = sdf.format(Date())
         val sm = SmsManager.getDefault()
-        val msg = "Your fiber internet bill has been paid on $currentDate."
+        val msg = "Your ${getString(R.string.app_name)} internet bill has been paid on $currentDate."
         sm.sendTextMessage(phoneNo, null, msg, null, null)
     }
 
