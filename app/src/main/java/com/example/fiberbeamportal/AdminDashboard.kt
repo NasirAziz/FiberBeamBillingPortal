@@ -47,6 +47,7 @@ class AdminDashboard : AppCompatActivity() {
         var unpaid:Int = 0
 
         val totalcustomer = MyFirebaseFirestore.customers.size.toString()
+        val totaluser = MyFirebaseFirestore.users.size.toString()
         for (customer in MyFirebaseFirestore.customers) {
             if (customer.status == "Paid")
                 paid++
@@ -56,6 +57,7 @@ class AdminDashboard : AppCompatActivity() {
         binding.tvTotalCustomers.text = totalcustomer
         binding.tvTotalPaid.text = paid.toString()
         binding.tvTotalUnpaid.text = unpaid.toString()
+        binding.tvTotalUser.text = totaluser
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

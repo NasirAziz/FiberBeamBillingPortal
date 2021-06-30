@@ -35,5 +35,6 @@ class Userdashboard : AppCompatActivity() {
         binding.tvUserName.text=name
         binding.tvAddress.text = adress
 
+
     }
 }

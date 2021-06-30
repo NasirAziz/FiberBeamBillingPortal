@@ -72,6 +72,24 @@
             android:textAlignment="textEnd"
             android:textColor="#DD2C00"
             android:textSize="25sp" />
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:text="Total User Registered"
+            android:textColor="#2962FF"
+            android:textSize="25sp" />
+        <TextView
+            android:id="@+id/tvTotalUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="170dp"
+            android:text="0"
+            android:layout_gravity="end"
+            android:textAlignment="textEnd"
+            android:textColor="#DD2C00"
+            android:textSize="25sp" />
     </com.google.android.material.card.MaterialCardView>
 
     <ImageView

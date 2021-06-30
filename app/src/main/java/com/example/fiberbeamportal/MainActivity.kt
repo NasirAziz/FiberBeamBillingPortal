@@ -24,6 +24,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     private fun resetCustomerBills() {
         val allCustomers: MutableList<DocumentReference> = mutableListOf()
         MyFirebaseFirestore.database.collection("Customers").get()

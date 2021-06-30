@@ -47,9 +47,9 @@ class AddCustomer : AppCompatActivity() {
                 val currentDay = "${currentDate[0]}"+"${currentDate[1]}"
 
                 customer = if(currentDay.toInt() < halfMonthDate)
-                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Unpaid",pkglis.toString())
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Unpaid",binding.spPkg.selectedItem.toString())
                 else
-                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Paid",pkglis.toString())
+                    NewCustomer(name,designation,bill,dateOfConnection,address,phno,"Paid",binding.spPkg.selectedItem.toString())
                 //TODO review Above added code logic
                 try {
                     FirebaseFirestore.getInstance().collection("Customers").document(phno)
