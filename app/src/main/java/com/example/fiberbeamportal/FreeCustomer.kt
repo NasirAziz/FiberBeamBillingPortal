@@ -11,6 +11,7 @@ import com.example.fiberbeamportal.databinding.ActivityFreeCustomerBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.FreeCustomer
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class FreeCustomer : AppCompatActivity() {
 
@@ -56,7 +57,9 @@ class FreeCustomer : AppCompatActivity() {
 
     private fun getFreeCustomers(context: Context) {
         var freeCustomer: FreeCustomer?
-        FirebaseFirestore.getInstance().collection("freeCustomers")
+        FirebaseFirestore.getInstance()
+            .collection("freeCustomers")
+            .orderBy("name", Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener {
 

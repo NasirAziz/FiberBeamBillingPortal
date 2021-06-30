@@ -17,6 +17,8 @@ import com.example.fiberbeamportal.databinding.ActivityPayBillBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewCustomer
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.core.UserData
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -173,6 +175,7 @@ private fun checkAndAskForPermission(){
                 binding.include.dtCustomerBillUD.setText(customer[position].bill)
                 binding.include.dtCustomerAddressUD.setText(customer[position].adress)
                 binding.include.dtCustomerPhoneUD.setText(customer[position].phone)
+                binding.include.dtCustomerPhoneUD.isEnabled = false
                 binding.include.dtCustomerDateOfPaymentUD.setText(customer[position].dateofconnection)
                 binding.include.dtCustomerDesignationUD.setText(customer[position].designation)
                 binding.include.dtCustomerStatusUD.setText(customer[position].status)
@@ -184,7 +187,9 @@ private fun checkAndAskForPermission(){
 
     private fun getCustomers(context: Context){
         var customer: NewCustomer?
-        FirebaseFirestore.getInstance().collection("Customers")
+        FirebaseFirestore.getInstance()
+            .collection("Customers")
+            .orderBy("name", Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener {
                 this.customer.removeAll{ true }
@@ -221,10 +226,19 @@ private fun checkAndAskForPermission(){
         val pkg =        binding.include.dtCustomerPackageUD.text.toString()
 
         val customer = NewCustomer(name,designation,bill,date,address,phone,status,pkg)
+        val customer2: MutableMap<String,Any> = mutableMapOf()
+        customer2["phone"] = customer.phone
+        customer2["name"] = customer.name
+        customer2["adress"] = customer.adress
+        customer2["dateofconnection"] = customer.dateofconnection
+        customer2["bill"] = customer.bill
+        customer2["pkg"] = customer.pkg
+        customer2["status"] = customer.status
+        customer2["designation"] = customer.designation
         MyFirebaseFirestore.database
             .collection("Customers")
             .document(docId)
-            .set(customer)
+            .update(customer2)
             .addOnSuccessListener {
                 Toast.makeText(
                     activity,
@@ -241,6 +255,59 @@ private fun checkAndAskForPermission(){
                     Toast.LENGTH_SHORT
                 ).show()
             }
+//        if(customer.phone == this.customer[index].phone) {
+/*            MyFirebaseFirestore.database
+                .collection("Customers")
+                .document(docId)
+                .set(customer)
+                .addOnSuccessListener {
+                    Toast.makeText(
+                        activity,
+                        "Customer Updated Successfully",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    getCustomers(activity)
+                    showRecyclerView()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(
+                        activity,
+                        "Error Unable To Update Customer ${it.message}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }*/
+//        }
+        //        else{
+//           val customer2: MutableMap<String,Any> = mutableMapOf()
+//            customer2["phone"] = customer.phone
+//            customer2["name"] = customer.name
+//            customer2["adress"] = customer.adress
+//            customer2["dateofconnection"] = customer.dateofconnection
+//            customer2["bill"] = customer.bill
+//            customer2["pkg"] = customer.pkg
+//            customer2["status"] = customer.status
+//            customer2["designation"] = customer.designation
+//            MyFirebaseFirestore.database
+//                .collection("Customers")
+//                .document(docId)
+//                .update(customer2)
+//                .addOnSuccessListener {
+//                    Toast.makeText(
+//                        activity,
+//                        "Customer Updated Successfully else",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                    getCustomers(activity)
+//                    showRecyclerView()
+//                }
+//                .addOnFailureListener {
+//                    Toast.makeText(
+//                        activity,
+//                        "Error Unable To Update Customer else ${it.message}",
+//                        Toast.LENGTH_SHORT
+//                    ).show()
+//                }
+//        }
     }
 
     private fun deleteUserFromDatabase(context: Context, docId: String) {

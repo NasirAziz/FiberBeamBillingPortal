@@ -13,6 +13,7 @@ import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
 import com.example.fiberbeamportal.model.NewCustomer
 import com.example.fiberbeamportal.model.NewUser
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class AdminDashboard : AppCompatActivity() {
     private lateinit var binding: ActivityAdminDashboardBinding
@@ -23,6 +24,7 @@ class AdminDashboard : AppCompatActivity() {
        // Log.i("AdminDashboard","$paid")
         if(MyFirebaseFirestore.customers.isEmpty()) {
             FirebaseFirestore.getInstance().collection("Customers")
+                .orderBy("name",Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener {
                     MyFirebaseFirestore.customers.removeAll{true}
@@ -120,6 +122,7 @@ class AdminDashboard : AppCompatActivity() {
     private fun getUsers(context:Context){
         var user: NewUser?
         MyFirebaseFirestore.database.collection("users")
+            .orderBy("name",Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener {
                 MyFirebaseFirestore.users.removeAll { true }

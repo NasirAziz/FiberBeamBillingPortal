@@ -7,20 +7,20 @@ import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
-import com.example.fiberbeamportal.adapter.PayBillAdapter
 import com.example.fiberbeamportal.adapter.UsersAdapter
 import com.example.fiberbeamportal.databinding.ActivityShowUsersBinding
 import com.example.fiberbeamportal.firebase.MyFirebaseFirestore
-import com.example.fiberbeamportal.model.NewCustomer
 import com.example.fiberbeamportal.model.NewUser
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.FirebaseApp
+import com.google.firebase.firestore.Query
+import com.google.firebase.ktx.Firebase
 import kotlin.properties.Delegates
 
 class ShowUsersActivity : AppCompatActivity() {
 
 
     private lateinit var adapter:UsersAdapter
-    private lateinit var binding:ActivityShowUsersBinding
+    private lateinit var binding: ActivityShowUsersBinding
     private val users: MutableList<NewUser?> = mutableListOf()
     private var index by Delegates.notNull<Int>()
 
@@ -43,6 +43,7 @@ class ShowUsersActivity : AppCompatActivity() {
             binding.includeEditUser.btnEditUser.setOnClickListener {
                 val docId = users[index]?.email
                 if (docId != null) {
+                    Log.i("ShowUsers",docId)
                     editUserFromDatabase(this, docId)
                 }
             }
@@ -69,6 +70,7 @@ class ShowUsersActivity : AppCompatActivity() {
         var user: NewUser?
         MyFirebaseFirestore.database
             .collection("users")
+            .orderBy("name", Query.Direction.ASCENDING)
             .get()
             .addOnSuccessListener {
                 users.removeAll{ true }
@@ -100,10 +102,18 @@ class ShowUsersActivity : AppCompatActivity() {
         val paf =  binding.includeEditUser.etUserPAF.text.toString()
 
         val user = NewUser(name,email,phone,password,address,paf)
+        val user2: MutableMap<String,Any> = mutableMapOf()
+        user2["phone"] = user.phone
+        user2["name"] = user.name
+        user2["email"] = user.email
+        user2["address"] = user.address
+        user2["password"] = user.password
+        user2["isPaf"] = user.isPAF
+
         MyFirebaseFirestore.database
             .collection("users")
             .document(docId)
-            .set(user)
+            .update(user2)
             .addOnSuccessListener {
                 Toast.makeText(
                     showUsersActivity,
@@ -167,6 +177,7 @@ class ShowUsersActivity : AppCompatActivity() {
         binding.includeEditUser.etUserPhone.setText(users[position]?.phone)
         binding.includeEditUser.etUserAddress.setText(users[position]?.address)
         binding.includeEditUser.etUserEmailName.setText(users[position]?.email)
+        binding.includeEditUser.etUserEmailName.isEnabled = false
         binding.includeEditUser.etUserPass.setText(users[position]?.password)
         binding.includeEditUser.etUserPAF.setText(users[position]?.isPAF)
     }

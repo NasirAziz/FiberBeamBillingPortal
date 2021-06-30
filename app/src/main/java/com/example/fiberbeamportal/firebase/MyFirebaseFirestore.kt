@@ -7,6 +7,7 @@ import com.example.fiberbeamportal.model.NewCustomer
 import com.example.fiberbeamportal.model.NewUser
 import com.example.fiberbeamportal.model.FreeCustomer
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class MyFirebaseFirestore {
    private val _database = FirebaseFirestore.getInstance()
@@ -20,6 +21,7 @@ class MyFirebaseFirestore {
         fun getUsers(context:Context){
             var user:NewUser?
             database.collection("users")
+                .orderBy("name",Query.Direction.ASCENDING)
                 .get()
                 .addOnSuccessListener {
                     users.removeAll { true }
