@@ -29,19 +29,19 @@
             android:id="@+id/tvUserName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
+            android:layout_marginStart="220dp"
             android:layout_marginTop="50dp"
-            android:text="AbdulHaseeb"
-            android:textSize="20dp" />
+            tools:text="AbdulHaseeb"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tvAddress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="220dp"
+            android:layout_marginStart="220dp"
             android:layout_marginTop="80dp"
-            android:text="Talagang"
-            android:textSize="20dp" />
+            tools:text="Talagang"
+            android:textSize="20sp" />
     </androidx.cardview.widget.CardView>
 
     <ImageView
@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="Welcome To Fiber Beam Billing Portal"
+        android:text="Welcome To Delta Telecom Billing Portal"
         android:textSize="20sp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"

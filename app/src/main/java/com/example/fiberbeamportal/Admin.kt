@@ -12,8 +12,8 @@ import com.example.fiberbeamportal.databinding.ActivityAdminBinding
 class Admin : AppCompatActivity() {
 
     private lateinit var binding: ActivityAdminBinding
-    val ADMIN_NAME = "advanced"
-    val PASSWORD = "advanced123"
+    val ADMIN_NAME = "Delta.1992@yahoo.com"
+    val PASSWORD = "freakingmaniac21"
 
     init {
     }
