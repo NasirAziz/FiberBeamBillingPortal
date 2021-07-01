@@ -1,187 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.appcompat.widget.LinearLayoutCompat
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AdminDashboard"
-    android:orientation="vertical">
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardView2"
+    android:layout_height="match_parent">
+    <androidx.appcompat.widget.LinearLayoutCompat
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        app:cardCornerRadius="5dp"
-        android:padding="5dp"
-        app:cardElevation="5dp">
+        tools:context=".AdminDashboard"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardView2"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Total Customers"
-            android:textColor="#2962FF"
-            android:textSize="25sp" />
+            android:layout_margin="5dp"
+            app:cardCornerRadius="5dp"
+            android:padding="5dp"
+            app:cardElevation="5dp">
 
-        <TextView
-            android:id="@+id/tvTotalCustomers"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Total Customers"
+                android:textColor="#2962FF"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvTotalCustomers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="0"
+                android:layout_gravity="end"
+                android:textColor="#DD2C00"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="Total Paid Bill"
+                android:textColor="#2962FF"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvTotalPaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="0"
+                android:layout_gravity="end"
+                android:textColor="#DD2C00"
+                android:textSize="25sp" />
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:text="Total Unpaid Bill"
+                android:textColor="#2962FF"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/tvTotalUnpaid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="120dp"
+                android:text="0"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="#DD2C00"
+                android:textSize="25sp" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:text="Total User Registered"
+                android:textColor="#2962FF"
+                android:textSize="25sp" />
+            <TextView
+                android:id="@+id/tvTotalUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="170dp"
+                android:text="0"
+                android:layout_gravity="end"
+                android:textAlignment="textEnd"
+                android:textColor="#DD2C00"
+                android:textSize="25sp" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/imageView4"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="0"
-            android:layout_gravity="end"
-            android:textColor="#DD2C00"
-            android:textSize="25sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:text="Total Paid Bill"
-            android:textColor="#2962FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/tvTotalPaid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
-            android:text="0"
-            android:layout_gravity="end"
-            android:textColor="#DD2C00"
-            android:textSize="25sp" />
-
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:text="Total Unpaid Bill"
-            android:textColor="#2962FF"
-            android:textSize="25sp" />
-
-        <TextView
-            android:id="@+id/tvTotalUnpaid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="120dp"
-            android:text="0"
-            android:layout_gravity="end"
-            android:textAlignment="textEnd"
-            android:textColor="#DD2C00"
-            android:textSize="25sp" />
-        <TextView
-
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="170dp"
-            android:text="Total User Registered"
-            android:textColor="#2962FF"
-            android:textSize="25sp" />
-        <TextView
-            android:id="@+id/tvTotalUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="170dp"
-            android:text="0"
-            android:layout_gravity="end"
-            android:textAlignment="textEnd"
-            android:textColor="#DD2C00"
-            android:textSize="25sp" />
-    </com.google.android.material.card.MaterialCardView>
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="220dp"
-        app:srcCompat="@drawable/a"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"/>
-
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:gravity="bottom"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="30dp">
+            android:layout_height="220dp"
+            app:srcCompat="@drawable/a"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"/>
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAddNewUser"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add New User"
-                android:textColor="@color/white"
-                android:backgroundTint="#42A5F5"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnAddNewCustomer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Add Customer"
-                android:textColor="@color/white"
-                android:backgroundTint="#42A5F5"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btn_add_free_customer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Add Free Customer"
-                android:textColor="@color/white"
-                android:layout_weight="1"
-                android:backgroundTint="#42A5F5"/>
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnViewBills"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="View Bills"
-                android:textColor="@color/white"
-                android:backgroundTint="#42A5F5"/>
-
-        </androidx.appcompat.widget.LinearLayoutCompat>
-
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnViewFreeCustomers"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
             android:layout_weight="1"
-            android:text="View Free Customers"
-            android:textColor="@color/white"
-            android:backgroundTint="#42A5F5"/>
+            android:gravity="bottom"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="30dp">
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/btnViewUsers"
+            <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="View Users"
-                android:textColor="@color/white"
-                android:backgroundTint="#42A5F5"/>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+                android:orientation="horizontal">
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAddNewUser"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Add New User"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42A5F5"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnAddNewCustomer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Add Customer"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42A5F5"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_add_free_customer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Free Customer"
+                    android:textColor="@color/white"
+                    android:layout_weight="1"
+                    android:backgroundTint="#42A5F5"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnViewBills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="View Bills"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42A5F5"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnViewFreeCustomers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="View Free Customers"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42A5F5"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btnViewUsers"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="View Users"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#42A5F5"/>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

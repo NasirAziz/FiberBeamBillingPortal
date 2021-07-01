@@ -23,7 +23,6 @@ class AdminDashboard : AppCompatActivity() {
         var customer: NewCustomer?
 
        // Log.i("AdminDashboard","$paid")
-        if(MyFirebaseFirestore.customers.isEmpty()) {
             FirebaseFirestore.getInstance().collection("Customers")
                 .orderBy("name",Query.Direction.ASCENDING)
                 .get()
@@ -44,9 +43,7 @@ class AdminDashboard : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-        }else{
-            updateUI()
-        }
+
     }
 
     private fun updateUI() {

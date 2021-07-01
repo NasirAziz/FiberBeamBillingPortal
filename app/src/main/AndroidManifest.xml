@@ -3,6 +3,7 @@
     package="com.example.fiberbeamportal">
 
     <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-feature android:name="android.hardware.screen.portrait"/>
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -10,17 +11,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FiberBeamPortal">
-        <activity android:name=".ShowUsersActivity" />
-        <activity android:name=".FreeCustomer" />
-        <activity android:name=".ViewBillsActivity" />
-        <activity android:name=".AdminDashboard" />
-        <activity android:name=".AddNewUser" />
-        <activity android:name=".PayBill" />
-        <activity android:name=".AddCustomer" />
-        <activity android:name=".UserDashboard" />
-        <activity android:name=".User" />
-        <activity android:name=".Admin" />
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".ShowUsersActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".FreeCustomer"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ViewBillsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AdminDashboard"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddNewUser"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PayBill"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddCustomer"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".UserDashboard"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".User"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".Admin"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
